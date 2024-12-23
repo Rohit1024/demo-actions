@@ -63,7 +63,7 @@ jobs:
         with:
           service: '${{ env.SERVICE }}'
           region: '${{ env.REGION }}'
-          flags: '--allow_unauthenticated=true' 
+          flags: '--allow-unauthenticated' 
           # NOTE: If using a different source folder, update the image name below:
           source: './'
 
