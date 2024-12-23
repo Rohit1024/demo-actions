@@ -60,8 +60,8 @@ jobs:
         with:
           project_id: '${{ secrets.PROJECT_ID }}'
           workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}' # TODO: replace with your workload identity provider
-          service_account : '${{ secrets.SERVICE_ACCOUNT_EMAIL }}'
 
+        
       - name: 'Deploy to Cloud Run'
         uses: 'google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17' # google-github-actions/deploy-cloudrun@v2
         with:
