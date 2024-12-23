@@ -50,12 +50,6 @@ jobs:
       - name: 'Checkout'
         uses: 'actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332' # actions/checkout@v4
 
-      - name: 'Display Secrets'
-        run: |
-          echo "PROJECT_ID: ${{ secrets.PROJECT_ID }}"
-          echo "WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}"
-          echo "SERVICE_ACCOUNT : ${{ secrets.SERVICE_ACCOUNT }}"
-
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@f112390a2df9932162083945e46d439060d66ec2' # google-github-actions/auth@v2
@@ -69,6 +63,7 @@ jobs:
         with:
           service: '${{ env.SERVICE }}'
           region: '${{ env.REGION }}'
+          flags: '--allow_unauthenticated=true' 
           # NOTE: If using a different source folder, update the image name below:
           source: './'
 
