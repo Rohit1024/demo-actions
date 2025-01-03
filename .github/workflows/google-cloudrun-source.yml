@@ -57,6 +57,15 @@ jobs:
           project_id: '${{ secrets.PROJECT_ID }}'
           workload_identity_provider: '${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}' # TODO: replace with your workload identity provider
           service_account: '${{ secrets.SERVICE_ACCOUNT }}' 
+          create_credentials_file: true
+
+      # Example of using the token in another step
+      - name: 'Use Access Token'
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ steps.auth.outputs.credentials_file_path }}
+        run: |
+          gcloud auth list 
+
 
       - name: 'Deploy to Cloud Run'
         uses: 'google-github-actions/deploy-cloudrun@33553064113a37d688aa6937bacbdc481580be17' # google-github-actions/deploy-cloudrun@v2
